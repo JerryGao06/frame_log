@@ -972,6 +972,7 @@ img {
 
   .photo-area {
     height: 60vh;
+    flex-direction: column;
   }
 
   .contact-sheet {
@@ -1005,6 +1006,16 @@ img {
 
   .quad-label {
     display: none;
+  }
+
+  .photo-stage.landscape .stage-photo {
+    width: 96%;
+    max-height: 90%;
+  }
+
+  .photo-stage.portrait .stage-photo {
+    height: 92%;
+    max-width: 92%;
   }
 }
 
