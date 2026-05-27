@@ -971,19 +971,27 @@ img {
   }
 
   .photo-area {
-    height: 60vh;
+    height: 70vh;
     flex-direction: column;
+    padding-bottom: 0;
+  }
+
+  .photo-stage {
+    flex: 1;
+    min-height: 0;
+    min-width: 0;
   }
 
   .contact-sheet {
     width: 100%;
-    height: 70px;
+    height: 56px;
     flex-direction: row;
     overflow-x: auto;
     overflow-y: hidden;
     padding: 0.5rem;
     border-left: none;
     border-top: 1px solid var(--border);
+    flex-shrink: 0;
   }
 
   .contact-thumb {
@@ -1009,13 +1017,13 @@ img {
   }
 
   .photo-stage.landscape .stage-photo {
-    width: 96%;
-    max-height: 90%;
+    width: 98%;
+    max-height: 94%;
   }
 
   .photo-stage.portrait .stage-photo {
-    height: 92%;
-    max-width: 92%;
+    height: 94%;
+    max-width: 94%;
   }
 }
 
