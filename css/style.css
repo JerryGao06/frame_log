@@ -223,6 +223,20 @@ img {
   margin-bottom: 0.8rem;
 }
 
+.home-sidebar-bottom .equip-label {
+  margin-top: 1.5rem;
+}
+
+.home-equipment {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-style: normal;
+}
+
 /* --- Right Panel: Location Cards --- */
 .home-content {
   flex: 1;
@@ -957,7 +971,7 @@ img {
   }
 
   .location-layout {
-    flex-direction: column;
+    display: block;
     height: auto;
   }
 
@@ -965,33 +979,57 @@ img {
     width: 100%;
     min-width: unset;
     max-width: unset;
-    padding: 2rem 1.5rem;
+    padding: 1.5rem 1.2rem;
     border-right: none;
     border-bottom: 1px solid var(--border);
+    position: static;
+    overflow-y: visible;
+    padding-bottom: 1rem;
+  }
+
+  .location-sidebar::before {
+    display: none;
   }
 
   .photo-area {
-    height: 70vh;
-    flex-direction: column;
+    display: block;
+    height: auto;
+    flex: none;
     padding-bottom: 0;
   }
 
   .photo-stage {
-    flex: 1;
-    min-height: 0;
-    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 55vh;
+    min-height: 300px;
+    flex: none;
+  }
+
+  .photo-meta {
+    bottom: 1rem;
+    left: 1rem;
+  }
+
+  .photo-counter {
+    top: 1rem;
+    right: 1rem;
   }
 
   .contact-sheet {
     width: 100%;
-    height: 56px;
+    height: auto;
+    min-height: 56px;
     flex-direction: row;
     overflow-x: auto;
     overflow-y: hidden;
-    padding: 0.5rem;
+    padding: 0.4rem 0.5rem;
     border-left: none;
     border-top: 1px solid var(--border);
     flex-shrink: 0;
+    flex-wrap: nowrap;
   }
 
   .contact-thumb {
