@@ -27,7 +27,9 @@
   root.style.setProperty('--theme-bg', loc.theme.bg);
   root.style.setProperty('--theme-primary', loc.theme.primary);
 
-  document.getElementById('chapterTag').textContent = `CHAPTER ${loc.chapter} \u00b7 ${loc.tags[0].toUpperCase()}`;
+  document.getElementById('chapterTag').textContent = isSeasonal
+    ? `✦ · ${loc.tags[0].toUpperCase()}`
+    : `CHAPTER ${loc.chapter} · ${loc.tags[0].toUpperCase()}`;
   document.getElementById('locNameEn').textContent = loc.name;
   document.getElementById('locNameCn').textContent = loc.nameCN;
   document.getElementById('locCoords').textContent = `${loc.coords} \u00b7 ${loc.year}`;
@@ -49,9 +51,12 @@
 
   const prevBtn = document.getElementById('navPrev');
   const nextBtn = document.getElementById('navNext');
-  if (locIndex > 0) { const p = LOCATIONS[locIndex - 1]; prevBtn.style.cursor = 'pointer'; prevBtn.onclick = () => { location.href = `location.html?loc=${p.id}`; }; }
+  const nashIdx = LOCATIONS.findIndex(l => l.isSeasonal);
+  const NAV_ORDER = [nashIdx, ...LOCATIONS.map((_, i) => i).filter(i => i !== nashIdx)];
+  const navPos = NAV_ORDER.indexOf(locIndex);
+  if (navPos > 0) { const p = LOCATIONS[NAV_ORDER[navPos - 1]]; prevBtn.style.cursor = 'pointer'; prevBtn.onclick = () => { location.href = `location.html?loc=${p.id}`; }; }
   else { prevBtn.style.opacity = '0.25'; prevBtn.style.cursor = 'default'; }
-  if (locIndex < LOCATIONS.length - 1) { const n = LOCATIONS[locIndex + 1]; nextBtn.style.cursor = 'pointer'; nextBtn.onclick = () => { location.href = `location.html?loc=${n.id}`; }; }
+  if (navPos < NAV_ORDER.length - 1) { const n = LOCATIONS[NAV_ORDER[navPos + 1]]; nextBtn.style.cursor = 'pointer'; nextBtn.onclick = () => { location.href = `location.html?loc=${n.id}`; }; }
   else { nextBtn.style.opacity = '0.25'; nextBtn.style.cursor = 'default'; }
 
   function getCurrentPhotos() { return isSeasonal && currentSeason ? loc.seasons[currentSeason].photos : loc.photos; }
