@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FRAME LOG · Location</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="location-layout" id="locationRoot">
+    <!-- Left Text Panel -->
+    <aside class="location-sidebar reveal">
+      <div class="location-sidebar-top">
+        <span class="chapter-tag" id="chapterTag"></span>
+        <h2 class="location-name-en" id="locNameEn"></h2>
+        <p class="location-name-cn" id="locNameCn"></p>
+        <p class="location-coords" id="locCoords"></p>
+        <div class="location-tags" id="locTags"></div>
+        <div class="separator"></div>
+        <p class="location-description" id="locDesc"></p>
+        <span class="viewpoints-label">VIEWPOINTS · 取景点</span>
+        <ul class="location-viewpoints" id="locViewpoints"></ul>
+        <div class="season-tabs" id="seasonTabs" style="display:none;"></div>
+        <p class="season-desc" id="seasonDesc" style="display:none;"></p>
+      </div>
+      <div class="location-sidebar-bottom">
+        <span class="exposure-info" id="exposureCount"></span>
+        <br>
+        <span id="locYearInfo"></span>
+      </div>
+    </aside>
+
+    <!-- Right Photo Area -->
+    <div class="photo-area">
+      <div class="photo-stage" id="photoStage">
+        <img class="stage-bg" id="stageBg" src="" alt="">
+        <div class="stage-vignette"></div>
+        <img class="stage-photo" id="stagePhoto" src="" alt="">
+        <div class="photo-meta" id="photoMeta"></div>
+        <div class="photo-counter" id="photoCounter"></div>
+      </div>
+
+      <!-- Contact Sheet Sidebar -->
+      <div class="contact-sheet" id="contactSheet">
+        <div class="contact-sheet-header">CONTACT SHEET</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation Bar -->
+  <nav class="nav-bar">
+    <a class="nav-home" href="index.html">← INDEX</a>
+    <span class="nav-loc" id="navLoc"></span>
+    <div class="nav-arrows">
+      <span id="navPrev">← PREV</span>
+      <span id="navNext">NEXT →</span>
+    </div>
+  </nav>
+
+  <script src="js/config.js"></script>
+  <script src="js/location.js"></script>
+</body>
+</html>

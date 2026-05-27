@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FRAME LOG · Photographic Journal</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="home-layout">
+    <!-- Left Panel -->
+    <aside class="home-sidebar reveal">
+      <div class="home-sidebar-top">
+        <span class="roll-tag">MASTER ROLL · ALL LOCATIONS</span>
+        <h1 class="home-title" id="homeTitle"></h1>
+        <p class="home-subtitle" id="homeSubtitle"></p>
+        <div class="separator"></div>
+      </div>
+      <div class="home-sidebar-bottom">
+        <span class="label">ARCHIVIST'S NOTE</span>
+        <p id="homeIntro"></p>
+      </div>
+    </aside>
+
+    <!-- Right Panel: Location Cards -->
+    <main class="home-content reveal" id="cardsContainer">
+      <!-- JavaScript populates cards here -->
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <div class="home-footer reveal">
+    <span id="homeDev"></span>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

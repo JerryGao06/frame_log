@@ -1,0 +1,4 @@
+# Don't upload 10MB originals — only the resized versions
+photos/
+*.py
+_check.py

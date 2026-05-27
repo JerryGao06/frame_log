@@ -1,0 +1,1069 @@
+/* ============================================
+   PHOTOGRAPHY PORTFOLIO — Global Styles
+   ============================================ */
+
+/* --- Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+
+/* --- CSS Variables --- */
+:root {
+  --bg: #0a0a0a;
+  --bg-elevated: #111111;
+  --text-primary: #e8e4dd;
+  --text-secondary: #8a857c;
+  --text-muted: #4a4540;
+  --accent: #d4953a;
+  --accent-2: #b8402c;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-light: rgba(255, 255, 255, 0.04);
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Crimson Text', Georgia, serif;
+  --font-mono: 'DM Mono', 'Courier New', monospace;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  --photo-bg-blur: 20px;
+  --photo-bg-scale: 1.12;
+  --photo-bg-darken: 0.35;
+}
+
+/* --- Reset --- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Film Grain Overlay --- */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+}
+
+/* --- Typography --- */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* --- Utility --- */
+.mono {
+  font-family: var(--font-mono);
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  background: color-mix(in srgb, var(--accent) 70%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  border-radius: 3px;
+  padding: 0.25em 0.9em;
+}
+
+.separator {
+  width: 50px;
+  height: 2px;
+  background: var(--accent);
+  margin: 1.5rem 0;
+  opacity: 0.8;
+}
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+  border-radius: 2px;
+}
+
+/* --- Page Load Reveals --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: revealUp 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+.reveal:nth-child(1) { animation-delay: 0.05s; }
+.reveal:nth-child(2) { animation-delay: 0.12s; }
+.reveal:nth-child(3) { animation-delay: 0.19s; }
+.reveal:nth-child(4) { animation-delay: 0.26s; }
+.reveal:nth-child(5) { animation-delay: 0.33s; }
+.reveal:nth-child(6) { animation-delay: 0.40s; }
+.reveal:nth-child(7) { animation-delay: 0.47s; }
+
+@keyframes revealUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   HOME PAGE
+   ============================================ */
+
+.home-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* --- Left Panel --- */
+.home-sidebar {
+  width: 32%;
+  min-width: 360px;
+  max-width: 480px;
+  padding: 3.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  background: var(--bg);
+  z-index: 10;
+}
+
+.home-sidebar-top .roll-tag {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  padding: 0.3em 0.8em;
+  border: 1px solid rgba(212, 149, 58, 0.3);
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.home-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.home-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.home-sidebar-bottom {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-style: italic;
+}
+
+.home-sidebar-bottom .label {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-style: normal;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+/* --- Right Panel: Location Cards --- */
+.home-content {
+  flex: 1;
+  padding: 3.5rem 3rem;
+  overflow-y: auto;
+}
+
+.cards-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.location-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 110px;
+  background: var(--bg-elevated);
+  cursor: pointer;
+  overflow: hidden;
+  transition: background 0.3s ease;
+}
+
+.card-bg-img {
+  position: absolute;
+  inset: 0;
+  background-size: 220% auto;
+  background-position: center 35%;
+  filter: brightness(0.55) saturate(0.6);
+  transform: scale(1);
+  transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1),
+              filter 0.4s ease;
+  z-index: 0;
+}
+
+.location-card:hover .card-bg-img {
+  transform: scale(1.06);
+  filter: brightness(0.7) saturate(0.8);
+}
+
+.location-card .card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(10, 10, 10, 0.7) 0%,
+    rgba(10, 10, 10, 0.2) 60%,
+    rgba(10, 10, 10, 0.05) 100%
+  );
+  z-index: 1;
+}
+
+.location-card .card-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 2.5rem;
+  display: flex;
+  align-items: baseline;
+  gap: 1.2rem;
+}
+
+.location-card .card-num {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  font-weight: 400;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+}
+
+.location-card .card-title {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.location-card .card-meta {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  opacity: 0.6;
+  margin-left: auto;
+  padding-right: 2rem;
+}
+
+.location-card:hover .card-title {
+  color: #fff;
+}
+
+.location-card:hover .card-meta {
+  opacity: 0.9;
+}
+
+/* ============================================
+   NASHVILLE STANDALONE QUADRANT CARD
+   ============================================ */
+
+.nashville-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  height: 200px;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  margin-bottom: 2rem;
+  border: 1px solid var(--border);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nashville-card:hover {
+  border-color: rgba(255,255,255,0.15);
+  box-shadow: 0 0 40px rgba(0,0,0,0.4);
+}
+
+/* Quadrant panels */
+.nash-quad {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.55) saturate(0.5);
+  transition: filter 0.5s ease;
+  overflow: hidden;
+}
+
+.nashville-card:hover .nash-quad {
+  filter: brightness(0.7) saturate(0.7);
+}
+
+.quad-label {
+  position: absolute;
+  bottom: 6px;
+  left: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.45rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+}
+
+/* Overlay on top of all quadrants */
+.nash-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(10,10,10,0.25) 0%,
+    rgba(10,10,10,0.6) 70%,
+    rgba(10,10,10,0.85) 100%
+  );
+}
+
+/* Content centered over quadrants */
+.nash-content {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  pointer-events: none;
+}
+
+.nash-chapter {
+  font-size: 1.4rem;
+  color: var(--accent);
+  margin-bottom: 0.1rem;
+  opacity: 0.8;
+}
+
+.nash-title {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  line-height: 1;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+}
+
+.nash-badge {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 2px;
+  padding: 0.25em 0.9em;
+  margin-top: 0.2rem;
+}
+
+.nash-meta {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  opacity: 0.6;
+  margin-top: 0.3rem;
+}
+
+/* Always-visible season strip at bottom */
+.nash-strip {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 3;
+  display: flex;
+}
+
+.nash-strip span {
+  flex: 1;
+  height: 100%;
+}
+
+/* Card accent bar on hover */
+.location-card .card-accent {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  z-index: 3;
+  transition: width 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.location-card:hover .card-accent {
+  width: 3px;
+}
+
+/* --- Home Footer --- */
+.home-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ============================================
+   LOCATION DETAIL PAGE
+   ============================================ */
+
+.location-layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* --- Left Text Panel --- */
+.location-sidebar {
+  width: 28%;
+  min-width: 300px;
+  max-width: 400px;
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid var(--border);
+  background: var(--theme-bg, var(--bg));
+  z-index: 10;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* Bold color wash at top of sidebar */
+.location-sidebar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 55%;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 120% 80% at 50% 10%,
+    color-mix(in srgb, var(--accent) 18%, transparent),
+    transparent 70%
+  );
+}
+
+/* Sidebar content above the wash */
+.location-sidebar-top,
+.location-sidebar-bottom {
+  position: relative;
+  z-index: 1;
+}
+
+.location-sidebar-top .chapter-tag {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  background: var(--accent);
+  padding: 0.35em 0.9em;
+  border-radius: 2px;
+}
+
+.location-name-en {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4vw, 3.8rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 0.3rem;
+}
+
+.location-name-cn {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin-bottom: 0.8rem;
+}
+
+.location-coords {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.location-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 2rem;
+}
+
+.location-description {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+/* Viewpoints */
+.location-viewpoints {
+  list-style: none;
+  border-left: 1px solid var(--border-light);
+  padding-left: 1rem;
+}
+
+.location-viewpoints li {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  margin-bottom: 0.7rem;
+  position: relative;
+  line-height: 1.6;
+}
+
+.location-viewpoints li::before {
+  content: '';
+  position: absolute;
+  left: -1rem;
+  top: 0.6em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.8;
+}
+
+.viewpoints-label {
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.7rem;
+  display: block;
+}
+
+.location-sidebar-bottom {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.location-sidebar-bottom .exposure-info {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* --- Right Photo Display Area --- */
+.photo-area {
+  flex: 1;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.photo-stage {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--theme-bg, var(--bg));
+}
+
+/* Blurred background layer — full image, CSS blur, GPU cached after first render */
+.photo-stage .stage-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(30px) brightness(var(--photo-bg-darken));
+  transition: opacity 0.2s ease;
+  z-index: 0;
+  will-change: opacity;
+  backface-visibility: hidden;
+}
+
+/* Vignette overlay using theme bg */
+.photo-stage .stage-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 45%, var(--theme-bg, rgba(10,10,10,0.5)) 100%);
+}
+
+/* Crisp foreground photo */
+.photo-stage .stage-photo {
+  position: relative;
+  z-index: 2;
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 60px rgba(0, 0, 0, 0.5);
+  transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+  object-fit: contain;
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+}
+
+/* Landscape photo sizing */
+.photo-stage.landscape .stage-photo {
+  width: 90%;
+  max-height: 88%;
+}
+
+/* Portrait photo sizing */
+.photo-stage.portrait .stage-photo {
+  height: 88%;
+  max-width: 88%;
+}
+
+/* Photo metadata overlay */
+.photo-meta {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  z-index: 3;
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+.photo-counter {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  z-index: 3;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  opacity: 0.5;
+}
+
+/* --- Contact Sheet Sidebar --- */
+.contact-sheet {
+  width: 70px;
+  background: var(--bg);
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0;
+  gap: 6px;
+  overflow-y: auto;
+  z-index: 5;
+}
+
+.contact-sheet-header {
+  font-family: var(--font-mono);
+  font-size: 0.45rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  padding: 0.8rem 0;
+  flex-shrink: 0;
+}
+
+.contact-thumb {
+  width: 48px;
+  height: 48px;
+  border-radius: 3px;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0.4;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  flex-shrink: 0;
+  border: 1px solid transparent;
+}
+
+.contact-thumb:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+.contact-thumb.active {
+  opacity: 1;
+  border-color: var(--accent);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+.contact-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- Bottom Navigation Bar --- */
+.nav-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  background: var(--bg-elevated);
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  z-index: 100;
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nav-bar .nav-home {
+  color: var(--text-muted);
+  transition: color 0.2s;
+  cursor: pointer;
+}
+
+.nav-bar .nav-home:hover {
+  color: var(--text-primary);
+}
+
+.nav-bar .nav-loc {
+  color: var(--text-secondary);
+}
+
+.nav-bar .nav-arrows {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-bar .nav-arrows span {
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.nav-bar .nav-arrows span:hover {
+  color: var(--text-primary);
+}
+
+/* --- Location page needs bottom padding to account for nav bar --- */
+.location-sidebar {
+  padding-bottom: 4rem;
+}
+.photo-area {
+  padding-bottom: 48px;
+}
+
+/* ============================================
+   LIGHTBOX (full-res original)
+   ============================================ */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox.lightbox-open {
+  opacity: 1;
+}
+
+.lightbox.lightbox-closing {
+  opacity: 0;
+}
+
+.lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  cursor: pointer;
+}
+
+.lightbox-img {
+  position: relative;
+  z-index: 1;
+  max-width: 94vw;
+  max-height: 94vh;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 4px 80px rgba(0, 0, 0, 0.6);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.5rem;
+  z-index: 2;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.6);
+  font-size: 2rem;
+  cursor: pointer;
+  transition: color 0.2s;
+  line-height: 1;
+}
+
+.lightbox-close:hover {
+  color: #fff;
+}
+
+.lightbox-hint {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  pointer-events: none;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 900px) {
+  .home-layout {
+    flex-direction: column;
+  }
+
+  .home-sidebar {
+    width: 100%;
+    min-width: unset;
+    max-width: unset;
+    height: auto;
+    position: static;
+    padding: 2rem 1.5rem;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .home-content {
+    padding: 1.5rem;
+  }
+
+  .location-layout {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .location-sidebar {
+    width: 100%;
+    min-width: unset;
+    max-width: unset;
+    padding: 2rem 1.5rem;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .photo-area {
+    height: 60vh;
+  }
+
+  .contact-sheet {
+    width: 100%;
+    height: 70px;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.5rem;
+    border-left: none;
+    border-top: 1px solid var(--border);
+  }
+
+  .contact-thumb {
+    width: 40px;
+    height: 40px;
+  }
+
+  .nashville-card {
+    height: 150px;
+    margin-bottom: 1.5rem;
+  }
+
+  .nash-title {
+    font-size: 2rem;
+  }
+
+  .nash-badge {
+    font-size: 0.45rem;
+  }
+
+  .quad-label {
+    display: none;
+  }
+}
+
+/* ============================================
+   SEASON TABS (Nashville Detail Page)
+   ============================================ */
+
+.season-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 1.2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.season-tab {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.season-tab:hover {
+  color: var(--text-secondary);
+}
+
+.season-tab.active {
+  color: #fff;
+  border-bottom-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.season-tab .tab-cn {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  color: inherit;
+  margin-top: 0.1rem;
+}
+
+/* Season description (appears below tabs) */
+.season-desc {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  transition: opacity 0.3s ease;
+}
