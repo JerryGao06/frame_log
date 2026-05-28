@@ -223,18 +223,15 @@ img {
   margin-bottom: 0.8rem;
 }
 
-.home-sidebar-bottom .equip-label {
-  margin-top: 1.5rem;
-}
-
 .home-equipment {
   font-family: var(--font-mono);
-  font-size: 0.58rem;
+  font-size: 0.62rem;
   font-weight: 300;
   letter-spacing: 0.04em;
   color: var(--text-secondary);
-  line-height: 1.6;
+  line-height: 1.5;
   font-style: normal;
+  margin-top: 0.5rem;
 }
 
 /* --- Right Panel: Location Cards --- */

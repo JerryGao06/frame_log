@@ -8,7 +8,7 @@ const SITE = {
   title: 'FRAME LOG',
   subtitle: 'A PHOTOGRAPHIC JOURNAL',
   intro: 'A personal archive of light, shadow, and places that leave a mark.',
-  equipment: 'Nikon Z6 II · NIKKOR Z 24-70mm f/2.8 S · NIKKOR Z 70-200mm f/2.8 VR S',
+  equipment: 'Shot on Nikon Z6 II with NIKKOR Z 24-70mm f/2.8 S & NIKKOR Z 70-200mm f/2.8 VR S',
   devInfo: 'DEV 05.2026 · SELF-PROCESSED'
 };
 
