@@ -7,7 +7,8 @@
   document.getElementById('homeTitle').textContent = SITE.title;
   document.getElementById('homeSubtitle').textContent = SITE.subtitle;
   document.getElementById('homeIntro').textContent = SITE.intro;
-  document.getElementById('homeEquip').textContent = SITE.equipment;
+  document.getElementById('equipBody').textContent = SITE.equipmentBody;
+  document.getElementById('equipLens').textContent = SITE.equipmentLens;
   document.getElementById('homeDev').textContent = SITE.devInfo;
 
   const container = document.getElementById('cardsContainer');
